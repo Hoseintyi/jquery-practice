@@ -36,9 +36,21 @@ function callAnswer(currentlevel) {
         }
 
     } else {
-
-        console.log("wrong");
+        new Audio("sounds/wrong.mp3").play();
+        $("body").addClass("game-over");
+        setTimeout(function () {
+            $("body").removeClass("game-over");
+        }, 200);
+        $("#level-title").text("Game Over, Press Any Key to Restart");
+        resetGame();
     }
+}
+
+function resetGame() {
+    started = false;
+    userClickedPattern = [];
+    gamePattern = [];
+    level = 0;
 }
 
 function playSoundsAndAnimate(id) {
